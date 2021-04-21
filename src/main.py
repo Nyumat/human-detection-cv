@@ -38,6 +38,17 @@ def output_option(args):
 
       if use_camera:
             detectByCamera()
+            
+def argsParser():
+    arg_parse = argparse.ArgumentParser()
+    # For the 'help' argument, see the comments next to the respective call for config
+    arg_parse.add_argument("-v", "--video", default=None, help="") # Path to the video file in the local directory
+    arg_parse.add_argument("-i", "--image", default=None, help="") # Path to where the image you'd like to test is in dir.
+    arg_parse.add_argument("-c", "--camera", default=None, help="") # Set to true if you want to use webcam.
+    arg_parse.add_argument("-o", "--output", type=str, help="") # Optional output video/photo file path
+    args = vars(arg_parse.parse_args())
+
+    return args 
 
 def detectByCamera(dis):
       output = cv2.VideoCapture(0)
